@@ -12,4 +12,5 @@
     <color name="ripple2">#59c2fa</color>
     <color name="colorPrimary">#068a5e</color>
     <color name="colorPrimaryDark">#046142</color>
+    <color name="primary">#ff99ff</color>
 </resources>
