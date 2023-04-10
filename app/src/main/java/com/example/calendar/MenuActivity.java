@@ -18,15 +18,16 @@ public class MenuActivity extends AppCompatActivity {
 
         bottomNavigationBar = findViewById(R.id.bottom_navigation_bar);
         bottomNavigationBar
-                .setActiveColor(R.color.primary)
-                .setInActiveColor("#ffccff")
-                .setBarBackgroundColor("#ffccff");
+                .setActiveColor(R.color.white)
+                .setInActiveColor(R.color.light_purple)
+                .setBarBackgroundColor(R.color.light_purple);
         bottomNavigationBar
-                .addItem(new BottomNavigationItem(R.drawable.calc, ""))
-                .addItem(new BottomNavigationItem(R.drawable.user, ""))
+                .addItem(new BottomNavigationItem(R.drawable.stats, ""))
                 .addItem(new BottomNavigationItem(R.drawable.history, ""))
+                .addItem(new BottomNavigationItem(R.drawable.calc, ""))
                 .addItem(new BottomNavigationItem(R.drawable.working_time, ""))
-                .setFirstSelectedPosition(0)
+                .addItem(new BottomNavigationItem(R.drawable.user, ""))
+                .setFirstSelectedPosition(4)
                 .initialise();
     }
 }
