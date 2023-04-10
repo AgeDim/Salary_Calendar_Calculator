@@ -15,33 +15,35 @@
             android:id="@+id/emailField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:text=""
             android:textColor="@color/colorPrimary"
             android:textColorHint="@color/colorPrimaryDark"
             android:textSize="20sp"
-            app:met_baseColor="#0056d3"
+            app:met_baseColor="#FFFFFF"
             app:met_errorColor="#ddaa00"
             app:met_floatingLabel="highlight"
             app:met_primaryColor="#982360"
-            app:met_singleLineEllipsis="true"/>
+            app:met_singleLineEllipsis="true" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/passField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
             android:hint="Password"
             android:inputType="textPassword"
             android:text=""
             android:textColor="@color/colorPrimary"
             android:textColorHint="@color/colorPrimaryDark"
             android:textSize="20sp"
-            app:met_baseColor="#0056d3"
+            app:met_baseColor="#FFFFFF"
             app:met_errorColor="#ddaa00"
             app:met_floatingLabel="highlight"
             app:met_primaryColor="#982360"
-            app:met_singleLineEllipsis="true"/>
+            app:met_singleLineEllipsis="true" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
