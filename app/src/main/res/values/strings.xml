@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Calendar</string>
+    <string name="AppName">AgeStep</string>
+    <string name="AppAfterName">Calendar</string>
+    <string name="BottomName">Please login or register</string>
+    <string name="Login">Login</string>
+    <string name="Register">Register</string>
+</resources>
