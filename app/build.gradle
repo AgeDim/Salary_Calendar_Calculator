@@ -45,4 +45,6 @@ dependencies {
     implementation 'com.ashokvarma.android:bottom-navigation-bar:2.2.0'
     implementation "androidx.cardview:cardview:1.0.0"
     implementation 'com.rengwuxian.materialedittext:library:2.1.4'
+    implementation 'com.applandeo:material-calendar-view:1.9.0-rc03'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
 }

@@ -7,9 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="ripple">#97e0f0</color>
-    <color name="ripple1">#6ca1fb</color>
-    <color name="ripple2">#59c2fa</color>
+    <color name="ripple">#ff99ff</color>
+    <color name="ripple1">#C09FFF</color>
+    <color name="ripple2">#C0B6F0</color>
     <color name="colorPrimary">#068a5e</color>
     <color name="colorPrimaryDark">#046142</color>
     <color name="primary">#ff99ff</color>
