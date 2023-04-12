@@ -29,13 +29,14 @@ public class CalculatorFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        root = container.findViewById(R.id.root_layer);
-        calculateBtn = container.findViewById(R.id.CalculateBtn);
-        period = container.findViewById(R.id.period);
-        wrkTime = container.findViewById(R.id.workingTime);
-        hourSalary = container.findViewById(R.id.hourSalary);
-        additional = container.findViewById(R.id.additionalHour);
-        salary = container.findViewById(R.id.salary);
+        View view = inflater.inflate(R.layout.fragment_calculator, container, false);
+        root = view.findViewById(R.id.root_layer);
+        calculateBtn = view.findViewById(R.id.CalculateBtn);
+        period = view.findViewById(R.id.period);
+        wrkTime = view.findViewById(R.id.workingTime);
+        hourSalary = view.findViewById(R.id.hourSalary);
+        additional = view.findViewById(R.id.additionalHour);
+        salary = view.findViewById(R.id.salary);
 
         calculateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,10 +53,10 @@ public class CalculatorFragment extends Fragment {
                                 result = Float.parseFloat(periodStr) * Float.parseFloat(wrkTimeStr) * Float.parseFloat(hourSalaryStr);
                                 if(Float.parseFloat(additionalStr) != 0){
                                     float tmp = Float.parseFloat(additionalStr) - 1;
-                                result = result + (((tmp-1) * Float.parseFloat(hourSalaryStr)) * 2) + (Float.parseFloat(hourSalaryStr) * 2);
+                                result = (float) (result + (((tmp) * Float.parseFloat(hourSalaryStr)) * 2) + (Float.parseFloat(hourSalaryStr) * 1.5));
                                 }
                             } else{
-                            Snackbar.make(root, "Additional houraw# must be a number", Snackbar.LENGTH_LONG).show();
+                            Snackbar.make(root, "Additional hours must be a number", Snackbar.LENGTH_LONG).show();
                             }
                         }else{
                             Snackbar.make(root, "Hour salary must be a number", Snackbar.LENGTH_LONG).show();
@@ -66,9 +67,9 @@ public class CalculatorFragment extends Fragment {
                 } else{
                     Snackbar.make(root, "Period must be a number", Snackbar.LENGTH_LONG).show();
                 }
-                salary.setText(Float.toString(result));
+                salary.setText(Float.toString(result)+ " руб");
             }
         });
-        return inflater.inflate(R.layout.fragment_calculator, container, false);
+        return view;
     }
 }
