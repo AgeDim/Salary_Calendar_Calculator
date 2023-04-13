@@ -12,9 +12,11 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/roboto_light"
         android:text="@string/calculator_name"
         android:textColor="@color/black"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:typeface="sans" />
 
     <TableLayout
         android:id="@+id/table"
@@ -32,10 +34,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/roboto_light"
                 android:text="@string/period"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                android:typeface="sans" />
 
             <EditText
                 android:id="@+id/period"
@@ -45,7 +49,8 @@
                 android:layout_weight="1"
                 android:phoneNumber="true"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black" />
+                android:textColorHint="@color/black"
+                android:background = "@drawable/edit_text_background"/>
         </TableRow>
 
         <TableRow
@@ -58,10 +63,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/roboto_light"
                 android:text="@string/working_time"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                android:typeface="sans" />
 
             <EditText
                 android:id="@+id/workingTime"
@@ -71,7 +78,8 @@
                 android:layout_weight="1"
                 android:phoneNumber="true"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black" />
+                android:textColorHint="@color/black"
+                android:background = "@drawable/edit_text_background"/>
         </TableRow>
 
         <TableRow
@@ -84,10 +92,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/roboto_light"
                 android:text="@string/hoursalary"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                android:typeface="sans" />
 
             <EditText
                 android:id="@+id/hourSalary"
@@ -97,7 +107,8 @@
                 android:layout_weight="1"
                 android:phoneNumber="true"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black" />
+                android:textColorHint="@color/black"
+                android:background = "@drawable/edit_text_background"/>
         </TableRow>
 
         <TableRow
@@ -110,10 +121,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/roboto_light"
                 android:text="@string/additionalhour"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                android:typeface="sans" />
 
             <EditText
                 android:id="@+id/additionalHour"
@@ -123,7 +136,8 @@
                 android:layout_weight="1"
                 android:phoneNumber="true"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black" />
+                android:textColorHint="@color/black"
+                android:background = "@drawable/edit_text_background"/>
         </TableRow>
     </TableLayout>
 
@@ -155,10 +169,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/roboto_light"
                 android:text="@string/salary"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                android:typeface="sans" />
 
             <TextView
                 android:id="@+id/salary"
@@ -166,6 +182,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/roboto_light"
                 android:text=""
                 android:textAlignment="center"
                 android:textColor="@color/black"
