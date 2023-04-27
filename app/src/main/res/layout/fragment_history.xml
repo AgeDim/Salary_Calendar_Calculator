@@ -6,10 +6,21 @@
     tools:context=".HistoryFragment">
 
     <TextView
+        android:id="@+id/historyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="10dp"
+        android:text="История"
         android:textColor="@color/black"
-        android:text="ебать история Казахстана" />
+        android:textSize="25sp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/historyView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/historyText"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
