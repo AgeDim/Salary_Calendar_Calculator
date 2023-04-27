@@ -37,7 +37,6 @@ import java.util.ArrayList;
 
 public class UserFragment extends Fragment {
 
-    FirebaseAuth auth;
     FirebaseDatabase db;
     DatabaseReference events;
     Button saveDayInfoButton;
@@ -74,7 +73,6 @@ public class UserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View tempView = inflater.inflate(R.layout.fragment_user, container, false);
-        auth = FirebaseAuth.getInstance();
         db = FirebaseDatabase.getInstance();
         events = db.getReference("events");
         CalenderEvent calenderEvent = tempView.findViewById(R.id.calender_event);
@@ -102,6 +100,7 @@ public class UserFragment extends Fragment {
                 inputTable.setVisibility(View.VISIBLE);
                 saveDayInfoButton.setVisibility(View.VISIBLE);
                 selectedDayTextView.setText(dayContainerModel.getDate());
+                scrollViewHistory.setVisibility(View.INVISIBLE);
                 Query query = events.orderByChild("userUid").equalTo(FirebaseAuth.getInstance().getUid());
                 query.addValueEventListener(new ValueEventListener() {
                     @SuppressLint("NotifyDataSetChanged")
@@ -135,7 +134,7 @@ public class UserFragment extends Fragment {
                                 Integer.parseInt(String.valueOf(workedHours.getText())),
                                 Integer.parseInt(String.valueOf(extraHours.getText())),
                                 String.valueOf(eventText.getText()),
-                                String.valueOf(comment.getText()));
+                                String.valueOf(comment.getText()), dayContainerModel.getMonth());
                         query.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -155,6 +154,7 @@ public class UserFragment extends Fragment {
                         });
                         inputTable.setVisibility(View.INVISIBLE);
                         saveDayInfoButton.setVisibility(View.INVISIBLE);
+                        scrollViewHistory.setVisibility(View.VISIBLE);
                         selectedDayTextView.setText("Информация");
                     }
 

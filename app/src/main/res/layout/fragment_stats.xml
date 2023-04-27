@@ -24,8 +24,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:layout_weight="1"
-            android:padding="6dp"
-            />
+            android:padding="6dp" />
 
         <!--Creating another linear layout -->
         <!-- to display pie chart details -->
@@ -51,8 +50,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
-                    android:textColor="@color/black"
-                    android:text="Month1" />
+                    android:text="Month1"
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
@@ -71,8 +70,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
-                    android:textColor="@color/black"
-                    android:text="Month2" />
+                    android:text="Month2"
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
@@ -93,8 +92,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
-                    android:textColor="@color/black"
-                    android:text="Month3" />
+                    android:text="Month3"
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
@@ -113,8 +112,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
-                    android:textColor="@color/black"
-                    android:text="Month4" />
+                    android:text="Month4"
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
@@ -126,16 +125,18 @@
         android:id="@+id/stat_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:layout_below="@+id/chart_layout"
+        android:layout_centerInParent="true"
         android:layout_marginTop="50dp"
         android:text="Статистика"
         android:textColor="@color/black" />
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/stat_header"
         android:layout_marginTop="25dp">
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -157,6 +158,7 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/black" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -178,7 +180,17 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/black" />
         </TableRow>
+
+        <Button
+            android:id="@+id/reload"
+            android:layout_width="150sp"
+            android:layout_height="wrap_content"
+            android:text="Обновить"
+            android:background="@drawable/ripple_btn"
+            android:layout_marginBottom="20dp"/>
+
         <TableRow
+            android:id="@+id/workingRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -191,13 +203,15 @@
                 android:textColor="@color/black" />
 
             <TextView
+                android:id="@+id/workingHour"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="---"
-                android:textColor="@color/black"
-                />
+                android:textColor="@color/black" />
         </TableRow>
+
         <TableRow
+            android:id="@+id/salaryRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -210,11 +224,11 @@
                 android:textColor="@color/black" />
 
             <TextView
+                android:id="@+id/salary"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text=""
-                android:textColor="@color/black"
-                />
+                android:textColor="@color/black" />
         </TableRow>
     </TableLayout>
 

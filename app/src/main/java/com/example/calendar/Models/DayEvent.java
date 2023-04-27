@@ -9,7 +9,17 @@ public class DayEvent {
     private String event;
     private String commentary;
 
-    public DayEvent(String userUid, String dayDate, Integer salaryPerHour, Integer hour, Integer additionHour, String event, String commentary) {
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
+    private String month;
+
+    public DayEvent(String userUid, String dayDate, Integer salaryPerHour, Integer hour, Integer additionHour, String event, String commentary, String month) {
         this.userUid = userUid;
         this.dayDate = dayDate;
         this.salaryPerHour = salaryPerHour;
@@ -17,6 +27,7 @@ public class DayEvent {
         this.additionHour = additionHour;
         this.event = event;
         this.commentary = commentary;
+        this.month = month;
     }
 
     public DayEvent() {
