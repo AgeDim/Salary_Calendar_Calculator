@@ -1,61 +1,81 @@
 package com.example.calendar.Models;
 
 public class DayEvent {
-    private Integer SalaryPerHour;
-    private Integer Hour;
+    private String userUid;
+    private String dayDate;
+    private Integer salaryPerHour;
+    private Integer hour;
+    private Integer additionHour;
+    private String event;
+    private String commentary;
+
+    public DayEvent(String userUid, String dayDate, Integer salaryPerHour, Integer hour, Integer additionHour, String event, String commentary) {
+        this.userUid = userUid;
+        this.dayDate = dayDate;
+        this.salaryPerHour = salaryPerHour;
+        this.hour = hour;
+        this.additionHour = additionHour;
+        this.event = event;
+        this.commentary = commentary;
+    }
 
     public DayEvent() {
     }
 
-    public DayEvent(Integer salaryPerHour, Integer hour, Integer additionHour, String event, String commentary) {
-        SalaryPerHour = salaryPerHour;
-        Hour = hour;
-        AdditionHour = additionHour;
-        Event = event;
-        Commentary = commentary;
+    public String getUserUid() {
+        return userUid;
+    }
+
+    public void setUserUid(String userUid) {
+        this.userUid = userUid;
+    }
+
+    public String getDayDate() {
+        return dayDate;
+    }
+
+    public void setDayDate(String dayDate) {
+        this.dayDate = dayDate;
     }
 
     public Integer getSalaryPerHour() {
-        return SalaryPerHour;
+        return salaryPerHour;
     }
 
     public void setSalaryPerHour(Integer salaryPerHour) {
-        SalaryPerHour = salaryPerHour;
+        this.salaryPerHour = salaryPerHour;
     }
 
     public Integer getHour() {
-        return Hour;
+        return hour;
     }
 
     public void setHour(Integer hour) {
-        Hour = hour;
+        this.hour = hour;
     }
 
     public Integer getAdditionHour() {
-        return AdditionHour;
+        return additionHour;
     }
 
     public void setAdditionHour(Integer additionHour) {
-        AdditionHour = additionHour;
+        this.additionHour = additionHour;
     }
 
     public String getEvent() {
-        return Event;
+        return event;
     }
 
     public void setEvent(String event) {
-        Event = event;
+        this.event = event;
     }
 
     public String getCommentary() {
-        return Commentary;
+        return commentary;
     }
 
     public void setCommentary(String commentary) {
-        Commentary = commentary;
+        this.commentary = commentary;
     }
 
-    private Integer AdditionHour;
-    private String Event;
-    private String Commentary;
 }
