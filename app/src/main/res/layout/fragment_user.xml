@@ -27,13 +27,25 @@
         android:id="@+id/calender_event"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/icon_linear" />
+        android:layout_below="@id/icon_linear"
+        app:selector_color="@color/light_purple"
+        app:selected_day_text_color="@color/black"/>
+    <TextView
+        android:id="@+id/selected_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_below="@id/calender_event"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="CurrentDay"
+        android:visibility="invisible"/>
 
     <TableLayout
         android:id="@+id/input_table"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/calender_event"
+        android:layout_below="@+id/selected_day"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="20dp"
         android:visibility="invisible">

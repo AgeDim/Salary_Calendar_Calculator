@@ -1,7 +1,5 @@
 package com.example.calendar;
 
-import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,36 +7,25 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.example.calendar.Models.DayEvent;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.rengwuxian.materialedittext.MaterialEditText;
 import com.skyhope.eventcalenderlibrary.CalenderEvent;
 import com.skyhope.eventcalenderlibrary.listener.CalenderDayClickListener;
 import com.skyhope.eventcalenderlibrary.model.DayContainerModel;
-import com.skyhope.eventcalenderlibrary.model.Event;
 
 import org.apache.commons.lang3.StringUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class UserFragment extends Fragment {
@@ -46,7 +33,6 @@ public class UserFragment extends Fragment {
     FirebaseAuth auth;
     FirebaseDatabase db;
     DatabaseReference events;
-
     Button saveDayInfoButton;
     EditText hourRate;
     EditText workedHours;
@@ -54,6 +40,8 @@ public class UserFragment extends Fragment {
     EditText eventText;
     EditText comment;
     TableLayout inputTable;
+
+    TextView selectedDayTextView;
 
     private void checkNumericValue(View view, EditText field) {
         if (StringUtils.isNumeric(field.getText())) {
@@ -84,6 +72,7 @@ public class UserFragment extends Fragment {
         eventText = tempView.findViewById(R.id.event);
         comment = tempView.findViewById(R.id.comment);
         inputTable = tempView.findViewById(R.id.input_table);
+        selectedDayTextView = tempView.findViewById(R.id.selected_day);
 
 
         calenderEvent.initCalderItemClickCallback(new CalenderDayClickListener() {
@@ -91,6 +80,9 @@ public class UserFragment extends Fragment {
             public void onGetDay(DayContainerModel dayContainerModel) {
                 inputTable.setVisibility(View.VISIBLE);
                 saveDayInfoButton.setVisibility(View.VISIBLE);
+                selectedDayTextView.setVisibility(View.VISIBLE);
+                selectedDayTextView.setText(dayContainerModel.getDate());
+
                 saveDayInfoButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -126,6 +118,7 @@ public class UserFragment extends Fragment {
                         });
                         inputTable.setVisibility(View.INVISIBLE);
                         saveDayInfoButton.setVisibility(View.INVISIBLE);
+                        selectedDayTextView.setVisibility(View.INVISIBLE);
                     }
 
                 });
