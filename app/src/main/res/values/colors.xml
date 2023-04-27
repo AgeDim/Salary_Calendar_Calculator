@@ -15,4 +15,5 @@
     <color name="primary">#ff99ff</color>
     <color name="light_purple">#C0B6F0</color>
     <color name="red">#FF0000</color>
+    <color name="trans">#00000000 </color>
 </resources>
