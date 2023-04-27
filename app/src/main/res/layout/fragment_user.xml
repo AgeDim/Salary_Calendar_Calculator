@@ -38,8 +38,20 @@
         android:layout_below="@id/calender_event"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="CurrentDay"
-        android:visibility="invisible"/>
+        android:text="Информация"
+        />
+    <ScrollView
+        android:id="@+id/history_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selected_day">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/history_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/history_scroll"
+            android:layout_centerHorizontal="true" />
+    </ScrollView>
 
     <TableLayout
         android:id="@+id/input_table"
@@ -70,7 +82,10 @@
                 android:background="@drawable/edit_text_background"
                 android:phoneNumber="true"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black" />
+                android:textColorHint="@color/black">
+                <requestFocus />
+
+            </EditText>
         </TableRow>
 
         <TableRow
@@ -93,7 +108,9 @@
                 android:background="@drawable/edit_text_background"
                 android:phoneNumber="true"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black" />
+                android:textColorHint="@color/black">
+                <requestFocus />
+            </EditText>
         </TableRow>
 
         <TableRow
@@ -116,7 +133,10 @@
                 android:background="@drawable/edit_text_background"
                 android:phoneNumber="true"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black" />
+                android:textColorHint="@color/black"
+                >
+                <requestFocus />
+            </EditText>
         </TableRow>
 
         <TableRow
@@ -138,7 +158,9 @@
                 android:layout_marginEnd="50dp"
                 android:background="@drawable/edit_text_background"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black" />
+                android:textColorHint="@color/black">
+                <requestFocus />
+            </EditText>
         </TableRow>
 
         <TableRow
@@ -160,7 +182,10 @@
                 android:layout_marginEnd="50dp"
                 android:background="@drawable/edit_text_background"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black" />
+                android:textColorHint="@color/black">
+                <requestFocus />
+
+            </EditText>
         </TableRow>
     </TableLayout>
 

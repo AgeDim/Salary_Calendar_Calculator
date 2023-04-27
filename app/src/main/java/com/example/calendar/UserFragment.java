@@ -1,19 +1,24 @@
 package com.example.calendar;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.calendar.Models.DayEvent;
+import com.example.calendar.Recycle.DayEventAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +31,8 @@ import com.skyhope.eventcalenderlibrary.listener.CalenderDayClickListener;
 import com.skyhope.eventcalenderlibrary.model.DayContainerModel;
 
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.ArrayList;
 
 
 public class UserFragment extends Fragment {
@@ -40,8 +47,14 @@ public class UserFragment extends Fragment {
     EditText eventText;
     EditText comment;
     TableLayout inputTable;
-
     TextView selectedDayTextView;
+    ScrollView scrollViewHistory;
+
+    ArrayList<DayEvent> dayEventList = new ArrayList<DayEvent>();
+
+    DayEventAdapter dayEventAdapter;
+
+    RecyclerView dayEvent;
 
     private void checkNumericValue(View view, EditText field) {
         if (StringUtils.isNumeric(field.getText())) {
@@ -74,14 +87,39 @@ public class UserFragment extends Fragment {
         inputTable = tempView.findViewById(R.id.input_table);
         selectedDayTextView = tempView.findViewById(R.id.selected_day);
 
+        dayEventAdapter = new DayEventAdapter(tempView.getContext(), dayEventList);
+        scrollViewHistory = tempView.findViewById(R.id.history_scroll);
+        dayEvent = tempView.findViewById(R.id.history_recycler);
+        LinearLayoutManager layoutManager
+                = new LinearLayoutManager(tempView.getContext());
+        dayEvent.setLayoutManager(layoutManager);
+        dayEvent.setAdapter(dayEventAdapter);
+
 
         calenderEvent.initCalderItemClickCallback(new CalenderDayClickListener() {
             @Override
             public void onGetDay(DayContainerModel dayContainerModel) {
                 inputTable.setVisibility(View.VISIBLE);
                 saveDayInfoButton.setVisibility(View.VISIBLE);
-                selectedDayTextView.setVisibility(View.VISIBLE);
                 selectedDayTextView.setText(dayContainerModel.getDate());
+                Query query = events.orderByChild("userUid").equalTo(FirebaseAuth.getInstance().getUid());
+                query.addValueEventListener(new ValueEventListener() {
+                    @SuppressLint("NotifyDataSetChanged")
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        dayEventList.clear();
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            DayEvent messages = ds.getValue(DayEvent.class);
+                            dayEventList.add(messages);
+                        }
+                        dayEventAdapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
                 saveDayInfoButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -98,7 +136,6 @@ public class UserFragment extends Fragment {
                                 Integer.parseInt(String.valueOf(extraHours.getText())),
                                 String.valueOf(eventText.getText()),
                                 String.valueOf(comment.getText()));
-                        Query query = events.orderByChild("userUid").equalTo(FirebaseAuth.getInstance().getUid());
                         query.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -118,7 +155,7 @@ public class UserFragment extends Fragment {
                         });
                         inputTable.setVisibility(View.INVISIBLE);
                         saveDayInfoButton.setVisibility(View.INVISIBLE);
-                        selectedDayTextView.setVisibility(View.INVISIBLE);
+                        selectedDayTextView.setText("Информация");
                     }
 
                 });
