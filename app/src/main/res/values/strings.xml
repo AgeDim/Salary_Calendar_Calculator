@@ -6,11 +6,16 @@
     <string name="Login">Login</string>
     <string name="Register">Register</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="calculator_name">Calculator</string>
-    <string name="period">Period</string>
-    <string name="working_time">Working time</string>
-    <string name="hoursalary">Hour Salary</string>
-    <string name="additionalhour">Additional Hour</string>
+    <string name="calculator_name">Калькулятор</string>
+    <string name="period">Период</string>
+    <string name="working_time">Время работы</string>
+    <string name="hoursalary">Зарплата за час</string>
+    <string name="additionalhour">Доп часы</string>
     <string name="calculate">Calculate</string>
-    <string name="salary">Salary: </string>
+    <string name="salary">Зарплата: </string>
+    <string name="hour_rate_hint">Введите часовую ставку</string>
+    <string name="worked_hours_hint">Введите кол-во часов</string>
+    <string name="extra_hours_hint">Введите кол-во доп часов</string>
+    <string name="event_hint">Введите событие</string>
+    <string name="comment_hint">Введите комментарий</string>
 </resources>

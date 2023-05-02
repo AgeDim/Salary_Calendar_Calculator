@@ -49,11 +49,11 @@ public class CalculatorFragment extends Fragment {
                 if(StringUtils.isNumeric(periodStr)){
                     if(StringUtils.isNumeric(wrkTimeStr)){
                         if(StringUtils.isNumeric(hourSalaryStr)){
+                            result = Float.parseFloat(periodStr) * Float.parseFloat(wrkTimeStr) * Float.parseFloat(hourSalaryStr);
                             if(StringUtils.isNumeric(additionalStr)){
-                                result = Float.parseFloat(periodStr) * Float.parseFloat(wrkTimeStr) * Float.parseFloat(hourSalaryStr);
                                 if(Float.parseFloat(additionalStr) != 0){
                                     float tmp = Float.parseFloat(additionalStr) - 1;
-                                result = (float) (result + (((tmp) * Float.parseFloat(hourSalaryStr)) * 2) + (Float.parseFloat(hourSalaryStr) * 1.5));
+                                    result = (float) (result + (((tmp) * Float.parseFloat(hourSalaryStr)) * 2) + (Float.parseFloat(hourSalaryStr) * 1.5));
                                 }
                             } else{
                             Snackbar.make(root, "Additional hours must be a number", Snackbar.LENGTH_LONG).show();

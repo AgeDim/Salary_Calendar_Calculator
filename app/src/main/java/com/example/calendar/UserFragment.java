@@ -1,12 +1,14 @@
 package com.example.calendar;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -29,10 +31,12 @@ import com.google.firebase.database.ValueEventListener;
 import com.skyhope.eventcalenderlibrary.CalenderEvent;
 import com.skyhope.eventcalenderlibrary.listener.CalenderDayClickListener;
 import com.skyhope.eventcalenderlibrary.model.DayContainerModel;
+import com.skyhope.eventcalenderlibrary.model.Event;
 
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class UserFragment extends Fragment {
@@ -54,6 +58,7 @@ public class UserFragment extends Fragment {
     DayEventAdapter dayEventAdapter;
 
     RecyclerView dayEvent;
+    ImageButton imageButton;
 
     private void checkNumericValue(View view, EditText field) {
         if (StringUtils.isNumeric(field.getText())) {
@@ -92,7 +97,20 @@ public class UserFragment extends Fragment {
                 = new LinearLayoutManager(tempView.getContext());
         dayEvent.setLayoutManager(layoutManager);
         dayEvent.setAdapter(dayEventAdapter);
+        imageButton = tempView.findViewById(R.id.icon_button);
+        Calendar calendar = Calendar.getInstance();
 
+
+        scrollViewHistory.setVisibility(View.VISIBLE);
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                inputTable.setVisibility(View.INVISIBLE);
+                saveDayInfoButton.setVisibility(View.INVISIBLE);
+                scrollViewHistory.setVisibility(View.VISIBLE);
+            }
+        });
 
         calenderEvent.initCalderItemClickCallback(new CalenderDayClickListener() {
             @Override

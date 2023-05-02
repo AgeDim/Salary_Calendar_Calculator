@@ -14,8 +14,8 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:gravity="end">
-
         <ImageButton
+            android:id="@+id/icon_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/account_icon_background"
@@ -80,9 +80,11 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="50dp"
                 android:background="@drawable/edit_text_background"
-                android:phoneNumber="true"
+                android:inputType="number"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black">
+                android:textColorHint="@color/grey"
+                android:hint="@string/hour_rate_hint"
+                >
                 <requestFocus />
 
             </EditText>
@@ -106,9 +108,11 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="50dp"
                 android:background="@drawable/edit_text_background"
-                android:phoneNumber="true"
+                android:inputType="number"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black">
+                android:textColorHint="@color/grey"
+                android:hint="@string/worked_hours_hint"
+                >
                 <requestFocus />
             </EditText>
         </TableRow>
@@ -131,9 +135,11 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="50dp"
                 android:background="@drawable/edit_text_background"
-                android:phoneNumber="true"
+                android:inputType="number"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
+                android:textColorHint="@color/grey"
+                android:hint="@string/extra_hours_hint"
+
                 >
                 <requestFocus />
             </EditText>
@@ -158,7 +164,8 @@
                 android:layout_marginEnd="50dp"
                 android:background="@drawable/edit_text_background"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black">
+                android:textColorHint="@color/grey"
+                android:hint="@string/event_hint">
                 <requestFocus />
             </EditText>
         </TableRow>
@@ -182,7 +189,8 @@
                 android:layout_marginEnd="50dp"
                 android:background="@drawable/edit_text_background"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black">
+                android:textColorHint="@color/grey"
+                android:hint="@string/comment_hint">
                 <requestFocus />
 
             </EditText>
