@@ -29,6 +29,7 @@
         <!--Creating another linear layout -->
         <!-- to display pie chart details -->
         <LinearLayout
+            android:id="@+id/month_info_linear"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
@@ -36,86 +37,12 @@
             android:gravity="center_vertical"
             android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/month_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="15dp"
-                android:layout_gravity="center_vertical">
-
-                <View
-                    android:layout_width="15dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/purple_200" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="10dp"
-                    android:text="Month1"
-                    android:textColor="@color/black" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="15dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="5dp">
-
-                <View
-                    android:layout_width="15dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/purple_500" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="10dp"
-                    android:text="Month2"
-                    android:textColor="@color/black" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="15dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="5dp">
-
-
-                <View
-                    android:layout_width="15dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/purple_700" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="10dp"
-                    android:text="Month3"
-                    android:textColor="@color/black" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="15dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="5dp">
-
-                <View
-                    android:layout_width="15dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/teal_200" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="10dp"
-                    android:text="Month4"
-                    android:textColor="@color/black" />
-
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/month_info_linear"
+                android:layout_centerHorizontal="true" />
 
         </LinearLayout>
 

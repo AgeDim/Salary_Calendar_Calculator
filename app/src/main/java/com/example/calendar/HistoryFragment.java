@@ -33,14 +33,14 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View tempView =inflater.inflate(R.layout.fragment_history, container, false);
+        events = FirebaseDatabase.getInstance().getReference("events");
         dayEventAdapter = new DayEventAdapter(tempView.getContext(), dayEventList);
-        events = FirebaseDatabase.getInstance().getReference();
         dayEvent = tempView.findViewById(R.id.historyView);
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(tempView.getContext());
         dayEvent.setLayoutManager(layoutManager);
         dayEvent.setAdapter(dayEventAdapter);
-        events.child("events").orderByChild("userUid").equalTo(FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {
+        events.orderByChild("userUid").equalTo(FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

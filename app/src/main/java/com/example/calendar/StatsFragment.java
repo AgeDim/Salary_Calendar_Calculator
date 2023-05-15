@@ -13,8 +13,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.calendar.Models.DayEvent;
+import com.example.calendar.Recycle.MonthEventAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,6 +30,7 @@ import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
@@ -44,6 +48,13 @@ public class StatsFragment extends Fragment {
     TableRow workingRow;
     TableRow salaryRow;
     PieChart pieChart;
+
+    RecyclerView monthRecycler;
+
+    MonthEventAdapter monthEventAdapter;
+    Map<String, Integer> monthColors = new HashMap<String, Integer>();
+    ArrayList<String> monthArray = new ArrayList<>();
+
 
     private boolean checkNumericValue(View view, EditText field) {
         if (StringUtils.isNumeric(field.getText())) {
@@ -91,14 +102,23 @@ public class StatsFragment extends Fragment {
         period1 = tempView.findViewById(R.id.period1);
         period2 = tempView.findViewById(R.id.period2);
         pieChart = tempView.findViewById(R.id.piechart);
+        monthRecycler = tempView.findViewById(R.id.month_recycler);
+        monthEventAdapter = new MonthEventAdapter(tempView.getContext(), monthArray, monthColors);
+        monthRecycler.setAdapter(monthEventAdapter);
+        LinearLayoutManager layoutManager
+                = new LinearLayoutManager(tempView.getContext());
+        monthRecycler.setLayoutManager(layoutManager);
+
         reload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Random rnd = new Random();
                 events.clear();
                 if (checkFieldNotEmpty(tempView, period1) && checkFieldNotEmpty(tempView, period2)) {
                     String firstMonth = String.valueOf(period1.getText());
                     String lastMonth = String.valueOf(period2.getText());
-                    ArrayList<String> monthArray = new ArrayList<>();
+                    monthArray.clear();
+                    monthColors.clear();
                     boolean withinRange = false;
                     for (Map.Entry<String, String> entry : monthToMonth.entrySet()) {
                         String month = entry.getKey();
@@ -107,6 +127,7 @@ public class StatsFragment extends Fragment {
                         }
                         if (withinRange) {
                             monthArray.add(entry.getValue());
+                            monthColors.put(entry.getValue(), Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256)));
                         }
                         if (month.equals(lastMonth)) {
                             break;
@@ -157,7 +178,6 @@ public class StatsFragment extends Fragment {
 
     private void setData(ArrayList<DayEvent> events, ArrayList<String> month) {
         pieChart.clearChart();
-        Random rnd = new Random();
         for (String mth : month) {
             ArrayList<DayEvent> temp = events.stream().filter(p -> p.getMonth().equals(mth)).collect(Collectors.toCollection(ArrayList::new));
             float result = (float) 0;
@@ -172,7 +192,8 @@ public class StatsFragment extends Fragment {
                     new PieModel(
                             mth,
                             result,
-                            Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))));
+                            monthColors.get(mth)));
+            System.out.println("Current month - " + mth + " Sum - " + result);
         }
         pieChart.startAnimation();
     }

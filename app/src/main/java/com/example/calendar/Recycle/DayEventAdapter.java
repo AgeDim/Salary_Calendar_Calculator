@@ -1,16 +1,24 @@
 package com.example.calendar.Recycle;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.calendar.Models.DayEvent;
 import com.example.calendar.R;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -19,6 +27,8 @@ import java.util.ArrayList;
 public class DayEventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<DayEvent> dayEventList = new ArrayList<DayEvent>();
     private Context context;
+
+    private DatabaseReference events = FirebaseDatabase.getInstance().getReference("events");
 
     public DayEventAdapter(Context context, ArrayList<DayEvent> messageList) {
         this.context = context;
@@ -40,6 +50,19 @@ public class DayEventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         ((ShowViewHolder) holder).workingTime.setText(String.valueOf(currentDay.getHour()));
         ((ShowViewHolder) holder).day.setText(String.valueOf(currentDay.getDayDate()));
         ((ShowViewHolder) holder).salary.setText(String.valueOf(calculateSalary(currentDay) + " Руб."));
+
+        ((ShowViewHolder) holder).deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Query query = events.orderByChild("userUid_dayDate").equalTo(FirebaseAuth.getInstance().getUid() + "_" + currentDay.getDayDate());
+                query.getRef().removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(context, "День удален из истории", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
     }
 
     @Override
@@ -56,7 +79,10 @@ public class DayEventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         TextView workingTime = itemView.findViewById(R.id.workingHourValue);
         TextView additionalHour = itemView.findViewById(R.id.additionalHourValue);
         TextView salary = itemView.findViewById(R.id.salaryValue);
-        TextView day = itemView.findViewById(R.id.dayText);
+        TextView day = itemView.findViewById(R.id.dayTextName);
+
+        ImageButton deleteButton = itemView.findViewById(R.id.dayDelete);
+
     }
 
     public static String calculateSalary(DayEvent event) {

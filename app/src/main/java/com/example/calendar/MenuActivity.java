@@ -32,9 +32,8 @@ public class MenuActivity extends AppCompatActivity {
                 .addItem(new BottomNavigationItem(R.drawable.stats, ""))
                 .addItem(new BottomNavigationItem(R.drawable.history, ""))
                 .addItem(new BottomNavigationItem(R.drawable.calc, ""))
-                .addItem(new BottomNavigationItem(R.drawable.working_time, ""))
                 .addItem(new BottomNavigationItem(R.drawable.user, ""))
-                .setFirstSelectedPosition(4)
+                .setFirstSelectedPosition(3)
                 .initialise();
         getSupportFragmentManager().beginTransaction().replace(R.id.container, userFragment).commit();
 
@@ -52,9 +51,6 @@ public class MenuActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, calculatorFragment).commit();
                         break;
                     case (3):
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, workingTimeFragment).commit();
-                        break;
-                    case (4):
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, userFragment).commit();
                         break;
                 }
