@@ -14,6 +14,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:gravity="end">
+
         <ImageButton
             android:id="@+id/icon_button"
             android:layout_width="50dp"
@@ -28,23 +29,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/icon_linear"
-        app:selector_color="@color/light_purple"
-        app:selected_day_text_color="@color/black"/>
+        app:selected_day_text_color="@color/black"
+        app:selector_color="@color/light_purple" />
+
     <TextView
         android:id="@+id/selected_day"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
         android:layout_below="@id/calender_event"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="Информация"
-        />
+        android:textColor="@color/black" />
+
     <ScrollView
         android:id="@+id/history_scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/selected_day">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/history_recycler"
             android:layout_width="match_parent"
@@ -80,11 +83,11 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="50dp"
                 android:background="@drawable/edit_text_background"
+                android:hint="@string/hour_rate_hint"
                 android:inputType="number"
                 android:textColor="@color/black"
-                android:textColorHint="@color/grey"
-                android:hint="@string/hour_rate_hint"
-                >
+                android:textColorHint="@color/grey">
+
                 <requestFocus />
 
             </EditText>
@@ -108,11 +111,12 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="50dp"
                 android:background="@drawable/edit_text_background"
-                android:inputType="number"
-                android:textColor="@color/black"
-                android:textColorHint="@color/grey"
                 android:hint="@string/worked_hours_hint"
-                >
+                android:inputType="number"
+                android:maxLength="10"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey">
+
                 <requestFocus />
             </EditText>
         </TableRow>
@@ -135,12 +139,14 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="50dp"
                 android:background="@drawable/edit_text_background"
+                android:hint="@string/extra_hours_hint"
                 android:inputType="number"
+                android:maxLength="10"
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey"
-                android:hint="@string/extra_hours_hint"
 
                 >
+
                 <requestFocus />
             </EditText>
         </TableRow>
@@ -163,9 +169,11 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="50dp"
                 android:background="@drawable/edit_text_background"
+                android:hint="@string/event_hint"
+                android:maxLength="10"
                 android:textColor="@color/black"
-                android:textColorHint="@color/grey"
-                android:hint="@string/event_hint">
+                android:textColorHint="@color/grey">
+
                 <requestFocus />
             </EditText>
         </TableRow>
@@ -188,9 +196,11 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="50dp"
                 android:background="@drawable/edit_text_background"
+                android:hint="@string/comment_hint"
+                android:maxLength="10"
                 android:textColor="@color/black"
-                android:textColorHint="@color/grey"
-                android:hint="@string/comment_hint">
+                android:textColorHint="@color/grey">
+
                 <requestFocus />
 
             </EditText>
@@ -207,6 +217,6 @@
         android:background="@drawable/ripple_btn"
         android:padding="10dp"
         android:text="Сохранить"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
 </RelativeLayout>
