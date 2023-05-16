@@ -7,34 +7,29 @@
     tools:context=".HistoryFragment">
 
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/chart_layout"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="50dp"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        >
 
         <!--Pie chart to display the data-->
         <org.eazegraph.lib.charts.PieChart xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/piechart"
-            android:layout_width="0dp"
+            android:layout_width="200dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
-            android:layout_weight="1"
+            android:gravity="start"
             android:padding="6dp" />
 
-        <!--Creating another linear layout -->
-        <!-- to display pie chart details -->
         <LinearLayout
             android:id="@+id/month_info_linear"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
+            android:layout_marginLeft="225dp"
+            android:gravity="end"
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -46,7 +41,7 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/stat_header"
@@ -108,13 +103,7 @@
                 android:textColorHint="@color/black" />
         </TableRow>
 
-        <Button
-            android:id="@+id/reload"
-            android:layout_width="150sp"
-            android:layout_height="wrap_content"
-            android:text="Обновить"
-            android:background="@drawable/ripple_btn"
-            android:layout_marginBottom="20dp"/>
+
 
         <TableRow
             android:id="@+id/workingRow"
@@ -134,6 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="---"
+                android:layout_marginLeft="5dp"
                 android:textColor="@color/black" />
         </TableRow>
 
@@ -155,8 +145,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text=""
+                android:layout_marginLeft="5dp"
                 android:textColor="@color/black" />
         </TableRow>
+        <Button
+            android:id="@+id/reload"
+            android:layout_width="150sp"
+            android:layout_height="wrap_content"
+            android:text="Обновить"
+            android:background="@drawable/ripple_btn"
+            android:layout_marginBottom="20dp"/>
     </TableLayout>
 
 

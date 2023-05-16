@@ -13,22 +13,30 @@ import com.example.calendar.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class MonthEventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
-    private ArrayList<String> months = new ArrayList<>();
+    private ArrayList<String> months;
 
-    private Map<String, Integer> monthColors = new HashMap<>();
+    private Map<String, Integer> monthColors;
     private Context context;
 
-    public void setMonths(ArrayList<String> months){
-        this.months = months;
-    }
-
-    public void setMonthColors(Map<String, Integer> monthColors){
-        this.monthColors = monthColors;
-    }
+    private Map<String, String> monthToMonth = new LinkedHashMap<String, String>() {{
+        put("January", "Январь");
+        put("February", "Февраль");
+        put("March", "Март");
+        put("April", "Апрель");
+        put("May", "Май");
+        put("June", "Июнь");
+        put("July", "Июль");
+        put("August", "Август");
+        put("September", "Сентябрь");
+        put("October", "Октябрь");
+        put("November", "Ноябрь");
+        put("December", "Декабрь");
+    }};
 
     public MonthEventAdapter(Context context, ArrayList<String> months, Map<String, Integer> monthColors){
         this.context = context;
@@ -40,13 +48,13 @@ public class MonthEventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.month_event, parent, false);
-        return new MonthEventAdapter.ShowViewHolderMonth(view);
+        return new ShowViewHolderMonth(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         String month = months.get(position);
-        ((MonthEventAdapter.ShowViewHolderMonth) holder).monthName.setText(month);
+        ((ShowViewHolderMonth) holder).monthName.setText(monthToMonth.get(month));
         ((MonthEventAdapter.ShowViewHolderMonth) holder).monthColor.setBackgroundColor(monthColors.get(month));
     }
 

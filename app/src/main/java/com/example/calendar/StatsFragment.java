@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -102,21 +103,19 @@ public class StatsFragment extends Fragment {
         period1 = tempView.findViewById(R.id.period1);
         period2 = tempView.findViewById(R.id.period2);
         pieChart = tempView.findViewById(R.id.piechart);
+
         monthRecycler = tempView.findViewById(R.id.month_recycler);
-        monthEventAdapter = new MonthEventAdapter(tempView.getContext(), monthArray, monthColors);
-        monthRecycler.setAdapter(monthEventAdapter);
-        LinearLayoutManager layoutManager
-                = new LinearLayoutManager(tempView.getContext());
-        monthRecycler.setLayoutManager(layoutManager);
+
+
+
 
         reload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Random rnd = new Random();
                 events.clear();
                 if (checkFieldNotEmpty(tempView, period1) && checkFieldNotEmpty(tempView, period2)) {
-                    String firstMonth = String.valueOf(period1.getText());
-                    String lastMonth = String.valueOf(period2.getText());
+                    String firstMonth = String.valueOf(period1.getText()).trim();
+                    String lastMonth = String.valueOf(period2.getText()).trim();
                     monthArray.clear();
                     monthColors.clear();
                     boolean withinRange = false;
@@ -127,7 +126,6 @@ public class StatsFragment extends Fragment {
                         }
                         if (withinRange) {
                             monthArray.add(entry.getValue());
-                            monthColors.put(entry.getValue(), Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256)));
                         }
                         if (month.equals(lastMonth)) {
                             break;
@@ -145,6 +143,11 @@ public class StatsFragment extends Fragment {
                                 }
                             }
                             setData(events, monthArray);
+                            monthEventAdapter = new MonthEventAdapter(tempView.getContext(), monthArray, monthColors);
+                            LinearLayoutManager layoutManager
+                                    = new LinearLayoutManager(tempView.getContext());
+                            monthRecycler.setLayoutManager(layoutManager);
+                            monthRecycler.setAdapter(monthEventAdapter);
                             Integer workingTime = 0;
                             Float result = (float) 0;
                             for (DayEvent event : events) {
@@ -178,7 +181,9 @@ public class StatsFragment extends Fragment {
 
     private void setData(ArrayList<DayEvent> events, ArrayList<String> month) {
         pieChart.clearChart();
+        Random rnd = new Random();
         for (String mth : month) {
+            monthColors.put(mth, Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256)));
             ArrayList<DayEvent> temp = events.stream().filter(p -> p.getMonth().equals(mth)).collect(Collectors.toCollection(ArrayList::new));
             float result = (float) 0;
             for (DayEvent event : temp) {

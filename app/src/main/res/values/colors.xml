@@ -17,4 +17,16 @@
     <color name="red">#FF0000</color>
     <color name="trans">#00000000 </color>
     <color name="grey">#808080 </color>
+    <color name="january">#a600fa</color>
+    <color name="february">#a600ea</color>
+    <color name="march">#a600da</color>
+    <color name="april">#a600ca</color>
+    <color name="may">#a600ba</color>
+    <color name="june">#a600aa</color>
+    <color name="july">#a6009a</color>
+    <color name="august">#a6008a</color>
+    <color name="september">#a6007a</color>
+    <color name="october">#a6006a</color>
+    <color name="november">#a6005a</color>
+    <color name="december">#a6004a</color>
 </resources>

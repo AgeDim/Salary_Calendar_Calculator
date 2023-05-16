@@ -109,6 +109,8 @@ public class UserFragment extends Fragment {
                 inputTable.setVisibility(View.INVISIBLE);
                 saveDayInfoButton.setVisibility(View.INVISIBLE);
                 scrollViewHistory.setVisibility(View.VISIBLE);
+                selectedDayTextView.setText("Информация");
+
             }
         });
 
